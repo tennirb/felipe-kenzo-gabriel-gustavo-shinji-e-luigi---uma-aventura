@@ -1,4 +1,9 @@
-let Fernando = sprites.create(assets.image`myImage`, SpriteKind.Player)
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    Fernando.startEffect(effects.fire, 5000)
+    sprites.destroy(Fernando, effects.trail, 100)
+})
+let Fernando: Sprite = null
+Fernando = sprites.create(assets.image`myImage`, SpriteKind.Player)
 controller.moveSprite(Fernando, 100, 100)
 tiles.setCurrentTilemap(tilemap`level`)
 scene.cameraFollowSprite(Fernando)
