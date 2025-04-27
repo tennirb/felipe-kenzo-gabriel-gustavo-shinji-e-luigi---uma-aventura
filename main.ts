@@ -1,11 +1,15 @@
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    Fernando.startEffect(effects.fire, 5000)
-    sprites.destroy(Fernando, effects.trail, 100)
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile12`, function (sprite, location) {
+    scene.cameraFollowSprite(Fernando)
+    tiles.setCurrentTilemap(tilemap`tilemap2`)
+    for (let index = 0; index < 4; index++) {
+        scene.cameraShake(4, 5000)
+        effects.bubbles.startScreenEffect(5000)
+    }
 })
 let Fernando: Sprite = null
-Fernando = sprites.create(assets.image`myImage`, SpriteKind.Player)
+Fernando = sprites.create(assets.image`fernando`, SpriteKind.Player)
 controller.moveSprite(Fernando, 100, 100)
-tiles.setCurrentTilemap(tilemap`level`)
+tiles.setCurrentTilemap(tilemap`tilemap1`)
 scene.cameraFollowSprite(Fernando)
 forever(function () {
     characterAnimations.loopFrames(
